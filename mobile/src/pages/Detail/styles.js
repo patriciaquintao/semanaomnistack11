@@ -43,6 +43,13 @@ export default StyleSheet.create({
         marginBottom: 16,
     },
 
+    forwardBox: {
+        padding: 24,
+        borderRadius:8,
+        backgroundColor: '#FFF',
+        marginBottom: 16,
+    },
+
     heroTitle: {
         fontWeight: 'bold',
         fontSize: 20,
@@ -67,6 +74,15 @@ export default StyleSheet.create({
         borderRadius: 8,
         height: 50,
         width: '48%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    actionForward: {
+        backgroundColor: '#E02041',
+        borderRadius: 8,
+        height: 50,
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
     },

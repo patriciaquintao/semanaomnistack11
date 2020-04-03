@@ -13,6 +13,9 @@ export default function Detail (){
 
     const incident = route.params.incident;
     const message = `Olá ${incident.name}, estou entrando em contato pois gostaria de ajudar no caso "${incident.title}" com o valor de ${Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(incident.value)}.`;
+    const message2 = `Olá, meu amigo! \n 
+    A ONG ${incident.name} está precisando de ajuda para o caso "${incident.title}" no valor de ${Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(incident.value)}.\n
+    \n O que você acha de ser o herói dela? \n \nEntre em contato pelo telefone ${incident.whatsapp} ou e-mail ${incident.email}`;
 
     function navigateBack() {
         navigation.goBack()
@@ -23,6 +26,13 @@ export default function Detail (){
             subject: `Herói do caso: ${incident.title}`,
             recipients: [incident.email],
             body: message,
+        })
+    }
+
+    function forwardMail() {
+        MailComposer.composeAsync({
+            subject: `O que acha de ser um herói?`,
+            body: message2,
         })
     }
 
@@ -72,6 +82,21 @@ export default function Detail (){
                     </TouchableOpacity>
                 </View>
             </View>
+
+            
+
+            <View style={styles.forwardBox}>
+                <Text style={styles.heroTitle}>Compartilhe esse caso com um amigo</Text>
+
+                <Text style={styles.heroDescription}>Você conhece algum herói?</Text>
+
+                <View style={styles.actions}>
+                    <TouchableOpacity style={styles.actionForward} onPress={forwardMail}>
+                        <Text style={styles.actionText}>Encaminhar por e-mail</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
         </View>   
     );
 }
